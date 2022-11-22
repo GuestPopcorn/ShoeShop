@@ -1,28 +1,31 @@
 from django.shortcuts import render
 
-from .models import Product, ProductColor, Color, Category, Brand, ProductSize
+from .models import Product, Color, Category, Brand, Size
 
 
 def home_page(request):
     products = Product.objects.all()
-    color = ProductColor.objects.all()
-    return render(request, 'Shop/need/index.html', {'product_list': products, 'product_color': color})
+    context = {'product_list': products,
+               }
+    return render(request, 'Shop/need/index.html', context=context)
 
 
 def shop_view(request):
     products = Product.objects.all()
-    color = ProductColor.objects.all()
     category = Category.objects.all()
     brands = Brand.objects.all()
-    sizes = ProductSize.objects.all()
+    size = Size.objects.all()
+    color = Color.objects.all()
     context = {'product_list': products,
-               'product_color': color,
-               'size': sizes,
                'category': category,
-               'brand': brands}
-    return render(request, 'Shop/none/shop-left-sidebar.html',)
+               'brand': brands,
+               'size': size,
+               'color': color,
+               }
+    return render(request, 'Shop/need/shop-left-sidebar.html', context=context)
 
 
 def product_detail(request, slug):
     product = Product.objects.get(url=slug)
+
     return render(request, 'Shop/need/shop-product-detail.html', {'product': product})

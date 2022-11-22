@@ -38,9 +38,6 @@ class Brand(models.Model):
     name = models.CharField("Бренд", max_length=150)
     url = models.SlugField(max_length=160, unique=True)
     description = models.TextField("Описание")
-    category = models.ForeignKey(
-        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True
-    )
 
     class Meta:
         verbose_name = "Бренд"
@@ -80,6 +77,10 @@ class Product(models.Model):
     stock = models.PositiveSmallIntegerField("Акция", default=0, )
     description = models.TextField("Описание")
     model = models.CharField("Модель обуви", max_length=150)
+    color = models.ManyToManyField(Color,  null=True)
+    size = models.ManyToManyField(Size, null=True)
+    material = models.ManyToManyField(Material, null=True)
+    capacity = models.IntegerField("Вес", null=True)
     brand = models.ForeignKey(
         Brand, verbose_name="Бренд", on_delete=models.CASCADE, null=True
     )
@@ -99,39 +100,6 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
-
-
-class ProductSize(models.Model):
-    product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)
-    size = models.ForeignKey(Size, verbose_name="Размер", on_delete=models.CASCADE)
-
-    # def __str__(self):
-    #     return self.product and self.size
-
-    def __str__(self):
-        return f"{self.size} - {self.product}"
-
-
-class ProductColor(models.Model):
-    product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)
-    color = models.ForeignKey(Color, verbose_name="Цвет", on_delete=models.CASCADE)
-
-    # def __str__(self):
-    #     return self.product and self.color
-
-    def __str__(self):
-        return f"{self.color} - {self.product}"
-
-
-class ProductMaterial(models.Model):
-    product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)
-    material = models.ForeignKey(Material, verbose_name="Материал", on_delete=models.CASCADE)
-
-    # def __str__(self):
-    #     return str(self.product) and str(self.material)
-
-    def __str__(self):
-        return f"{self.material} - {self.product}"
 
 
 class ProductShots(models.Model):

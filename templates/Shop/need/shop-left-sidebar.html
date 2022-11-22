@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html>
 <head>
 <!-- Meta -->
 <meta charset="utf-8">
@@ -12,35 +12,33 @@
 <!-- SITE TITLE -->
 <title>Shopwise - eCommerce Bootstrap 5 HTML Template</title>
 <!-- Favicon Icon -->
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.png' %}">
 <!-- Animation CSS -->
-<link rel="stylesheet" href="assets/css/animate.css">	
+<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
 <!-- Latest Bootstrap min CSS -->
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 <!-- Icon Font CSS -->
-<link rel="stylesheet" href="assets/css/all.min.css">
-<link rel="stylesheet" href="assets/css/ionicons.min.css">
-<link rel="stylesheet" href="assets/css/themify-icons.css">
-<link rel="stylesheet" href="assets/css/linearicons.css">
-<link rel="stylesheet" href="assets/css/flaticon.css">
-<link rel="stylesheet" href="assets/css/simple-line-icons.css">
+<link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/ionicons.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/linearicons.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/simple-line-icons.css' %}">
 <!--- owl carousel CSS-->
-<link rel="stylesheet" href="assets/owlcarousel/css/owl.carousel.min.css">
-<link rel="stylesheet" href="assets/owlcarousel/css/owl.theme.css">
-<link rel="stylesheet" href="assets/owlcarousel/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.css' %}">
+<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.default.min.css' %}">
 <!-- Magnific Popup CSS -->
-<link rel="stylesheet" href="assets/css/magnific-popup.css">
-<!-- jquery-ui CSS -->
-<link rel="stylesheet" href="assets/css/jquery-ui.css">
+<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
 <!-- Slick CSS -->
-<link rel="stylesheet" href="assets/css/slick.css">
-<link rel="stylesheet" href="assets/css/slick-theme.css">
+<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/slick-theme.css' %}">
 <!-- Style CSS -->
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
 
 </head>
 
@@ -108,9 +106,9 @@
                 	<div class="d-flex align-items-center justify-content-center justify-content-md-start">
                         <div class="lng_dropdown me-2">
                             <select name="countries" class="custome_select">
-                                <option value='en' data-image="assets/images/eng.png" data-title="English">English</option>
-                                <option value='fn' data-image="assets/images/fn.png" data-title="France">France</option>
-                                <option value='us' data-image="assets/images/us.png" data-title="United States">United States</option>
+                                <option value='en' data-image="{% static 'assets/images/eng.png' %}" data-title="English">English</option>
+                                <option value='fn' data-image="{% static 'assets/images/fn.png' %}g" data-title="France">France</option>
+                                <option value='us' data-image="{% static 'assets/images/us.png' %}" data-title="United States">United States</option>
                             </select>
                         </div>
                         <div class="me-3">
@@ -141,8 +139,8 @@
     	<div class="container">
             <nav class="navbar navbar-expand-lg"> 
                 <a class="navbar-brand" href="../need/index.html">
-                    <img class="logo_light" src="assets/images/logo_light.png" alt="logo" />
-                    <img class="logo_dark" src="assets/images/logo_dark.png" alt="logo" />
+                    <img class="logo_light" src="{% static 'assets/images/logo_light.png' %}" alt="logo" />
+                    <img class="logo_dark" src="{% static 'assets/images/logo_dark.png' %}" alt="logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false"> 
                     <span class="ion-android-menu"></span>
@@ -224,7 +222,7 @@
                                 <div class="d-lg-flex menu_banners row g-3 px-3">
                                     <div class="col-sm-4">
                                         <div class="header-banner">
-                                            <img src="assets/images/menu_banner1.jpg" alt="menu_banner1">
+                                            <img src="{% static 'assets/images/menu_banner1.jpg' %}" alt="menu_banner1">
                                             <div class="banne_info">
                                                 <h6>10% Off</h6>
                                                 <h4>New Arrival</h4>
@@ -234,7 +232,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="header-banner">
-                                            <img src="assets/images/menu_banner2.jpg" alt="menu_banner2">
+                                            <img src="{% static 'assets/images/menu_banner2.jpg' %}" alt="menu_banner2">
                                             <div class="banne_info">
                                                 <h6>15% Off</h6>
                                                 <h4>Men's Fashion</h4>
@@ -244,7 +242,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="header-banner">
-                                            <img src="assets/images/menu_banner3.jpg" alt="menu_banner3">
+                                            <img src="{% static 'assets/images/menu_banner3.jpg' %}" alt="menu_banner3">
                                             <div class="banne_info">
                                                 <h6>23% Off</h6>
                                                 <h4>Kids Fashion</h4>
@@ -351,7 +349,7 @@
                                             <div class="header_banner_content">
                                                 <div class="shop_banner">
                                                     <div class="banner_img overlay_bg_40">
-                                                        <img src="assets/images/shop_banner.jpg" alt="shop_banner"/>
+                                                        <img src="{% static 'assets/images/shop_banner.jpg' %}" alt="shop_banner"/>
                                                     </div> 
                                                     <div class="shop_bn_content">
                                                         <h5 class="text-uppercase shop_subtitle">New Collection</h5>
@@ -383,12 +381,12 @@
                             <ul class="cart_list">
                                 <li>
                                     <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                    <a href="#"><img src="assets/images/cart_thamb1.jpg" alt="cart_thumb1">Variable product 001</a>
+                                    <a href="#"><img src="{% static 'assets/images/cart_thamb1.jpg' %}" alt="cart_thumb1">Variable product 001</a>
                                     <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>78.00</span>
                                 </li>
                                 <li>
                                     <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                    <a href="#"><img src="assets/images/cart_thamb2.jpg" alt="cart_thumb2">Ornare sed consequat</a>
+                                    <a href="#"><img src="{% static 'assets/images/cart_thamb2.jpg' %}" alt="cart_thumb2">Ornare sed consequat</a>
                                     <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>81.00</span>
                                 </li>
                             </ul>
@@ -467,10 +465,11 @@
                 </div> 
                 <div class="row shop_container">
                     <div class="col-md-4 col-6">
+                        {% for product in product_list %}
                         <div class="product">
                             <div class="product_img">
                                 <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img1.jpg" alt="product_img1">
+                                    <img src="{{ product.poster.url }}" alt="product_img1">
                                 </a>
                                 <div class="product_action_box">
                                     <ul class="list_none pr_action_btn">
@@ -482,9 +481,9 @@
                                 </div>
                             </div>
                             <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">Blue Dress For Woman</a></h6>
+                                <h6 class="product_title"><a href="../need/shop-product-detail.html">{{ product.name }}</a></h6>
                                 <div class="product_price">
-                                    <span class="price">$45.00</span>
+                                    <span class="price">${{ product.price }}</span>
                                     <del>$55.25</del>
                                     <div class="on_sale">
                                         <span>35% Off</span>
@@ -497,13 +496,13 @@
                                     <span class="rating_num">(21)</span>
                                 </div>
                                 <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+                                    <p>{{ product.description }}</p>
                                 </div>
                                 <div class="pr_switch_wrap">
                                     <div class="product_color_switch">
-                                        <span class="active" data-color="#87554B"></span>
-                                        <span data-color="#333333"></span>
-                                        <span data-color="#DA323F"></span>
+                                        {% for color in product.color.all %}
+                                        <span class="active" data-color="#{{ color.code }}"></span>
+                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="list_product_action_box">
@@ -516,414 +515,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img2.jpg" alt="product_img2">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">Lether Gray Tuxedo</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$55.00</span>
-                                    <del>$95.00</del>
-                                    <div class="on_sale">
-                                        <span>25% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:68%"></div>
-                                    </div>
-                                    <span class="rating_num">(15)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#847764"></span>
-                                        <span data-color="#0393B5"></span>
-                                        <span data-color="#DA323F"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <span class="pr_flash">New</span>
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img3.jpg" alt="product_img3">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">woman full sliv dress</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$68.00</span>
-                                    <del>$99.00</del>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:87%"></div>
-                                    </div>
-                                    <span class="rating_num">(25)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#333333"></span>
-                                        <span data-color="#7C502F"></span>
-                                        <span data-color="#2F366C"></span>
-                                        <span data-color="#874A3D"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img4.jpg" alt="product_img4">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">light blue Shirt</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$69.00</span>
-                                    <del>$89.00</del>
-                                    <div class="on_sale">
-                                        <span>20% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:70%"></div>
-                                    </div>
-                                    <span class="rating_num">(22)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#333333"></span>
-                                        <span data-color="#A92534"></span>
-                                        <span data-color="#B9C2DF"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img5.jpg" alt="product_img5">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">blue dress for woman</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$45.00</span>
-                                    <del>$55.25</del>
-                                    <div class="on_sale">
-                                        <span>35% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:80%"></div>
-                                    </div>
-                                    <span class="rating_num">(21)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#87554B"></span>
-                                        <span data-color="#333333"></span>
-                                        <span data-color="#5FB7D4"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <span class="pr_flash bg-danger">Hot</span>
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img6.jpg" alt="product_img6">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">Blue casual check shirt</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$55.00</span>
-                                    <del>$95.00</del>
-                                    <div class="on_sale">
-                                        <span>25% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:68%"></div>
-                                    </div>
-                                    <span class="rating_num">(15)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#87554B"></span>
-                                        <span data-color="#333333"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <span class="pr_flash bg-success">Sale</span>
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img7.jpg" alt="product_img7">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">white black line dress</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$68.00</span>
-                                    <del>$99.00</del>
-                                    <div class="on_sale">
-                                        <span>20% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:87%"></div>
-                                    </div>
-                                    <span class="rating_num">(25)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#333333"></span>
-                                        <span data-color="#7C502F"></span>
-                                        <span data-color="#2F366C"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img8.jpg" alt="product_img8">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">Men blue jins Shirt</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$69.00</span>
-                                    <del>$89.00</del>
-                                    <div class="on_sale">
-                                        <span>20% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:70%"></div>
-                                    </div>
-                                    <span class="rating_num">(22)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#333333"></span>
-                                        <span data-color="#444653"></span>
-                                        <span data-color="#B9C2DF"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="product">
-                            <div class="product_img">
-                                <a href="../need/shop-product-detail.html">
-                                    <img src="assets/images/product_img9.jpg" alt="product_img9">
-                                </a>
-                                <div class="product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_info">
-                                <h6 class="product_title"><a href="../need/shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                <div class="product_price">
-                                    <span class="price">$45.00</span>
-                                    <del>$55.25</del>
-                                    <div class="on_sale">
-                                        <span>35% Off</span>
-                                    </div>
-                                </div>
-                                <div class="rating_wrap">
-                                    <div class="rating">
-                                        <div class="product_rate" style="width:80%"></div>
-                                    </div>
-                                    <span class="rating_num">(21)</span>
-                                </div>
-                                <div class="pr_desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                </div>
-                                <div class="pr_switch_wrap">
-                                    <div class="product_color_switch">
-                                        <span class="active" data-color="#B5B6BB"></span>
-                                        <span data-color="#333333"></span>
-                                        <span data-color="#DA323F"></span>
-                                    </div>
-                                </div>
-                                <div class="list_product_action_box">
-                                    <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                        <li><a href="#"><i class="icon-heart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
         		<div class="row">
@@ -942,11 +534,9 @@
                 	<div class="widget">
                         <h5 class="widget_title">Categories</h5>
                         <ul class="widget_categories">
-                            <li><a href="#"><span class="categories_name">Women</span><span class="categories_num">(9)</span></a></li>
-                            <li><a href="#"><span class="categories_name">Top</span><span class="categories_num">(6)</span></a></li>
-                            <li><a href="#"><span class="categories_name">T-Shirts</span><span class="categories_num">(4)</span></a></li>
-                            <li><a href="#"><span class="categories_name">Men</span><span class="categories_num">(7)</span></a></li>
-                            <li><a href="#"><span class="categories_name">Shoes</span><span class="categories_num">(12)</span></a></li>
+                            {% for category in category %}
+                                <li><a href="#"><span class="categories_name">{{ category.name }}</span></a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="widget">
@@ -963,67 +553,36 @@
                     <div class="widget">
                     	<h5 class="widget_title">Brand</h5>	
                         <ul class="list_brand">
+                            {% for brand in brand %}
                             <li>
                                 <div class="custome-checkbox">
                                     <input class="form-check-input" type="checkbox" name="checkbox" id="Arrivals" value="">
-                                    <label class="form-check-label" for="Arrivals"><span>New Arrivals</span></label>
+                                    <label class="form-check-label" for="Arrivals"><span>{{ brand.name }}</span></label>
                                 </div>
                             </li>
-                            <li>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="Lighting" value="">
-                                    <label class="form-check-label" for="Lighting"><span>Lighting</span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="Tables" value="">
-                                    <label class="form-check-label" for="Tables"><span>Tables</span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="Chairs" value="">
-                                    <label class="form-check-label" for="Chairs"><span>Chairs</span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="Accessories" value="">
-                                    <label class="form-check-label" for="Accessories"><span>Accessories</span></label>
-                                </div>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="widget">
                     	<h5 class="widget_title">Size</h5>
                         <div class="product_size_switch">
-                            <span>xs</span>
-                            <span>s</span>
-                            <span>m</span>
-                            <span>l</span>
-                            <span>xl</span>
-                            <span>2xl</span>
-                            <span>3xl</span>
+                            {% for size in size %}
+                            <span>{{ size.size }}</span>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="widget">
                     	<h5 class="widget_title">Color</h5>
                         <div class="product_color_switch">
-                            <span data-color="#87554B"></span>
-                            <span data-color="#333333"></span>
-                            <span data-color="#DA323F"></span>
-                            <span data-color="#2F366C"></span>
-                            <span data-color="#B5B6BB"></span>
-                            <span data-color="#B9C2DF"></span>
-                            <span data-color="#5FB7D4"></span>
-                            <span data-color="#2F366C"></span>
+                            {% for color in color %}
+                            <span data-color="#{{ color.code }}"></span>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="widget">
                         <div class="shop_banner">
                             <div class="banner_img overlay_bg_20">
-                                <img src="assets/images/sidebar_banner_img.jpg" alt="sidebar_banner_img">
+                                <img src="{% static 'assets/images/sidebar_banner_img.jpg' %}" alt="sidebar_banner_img">
                             </div> 
                             <div class="shop_bn_content2 text_white">
                                 <h5 class="text-uppercase shop_subtitle">New Collection</h5>
@@ -1072,7 +631,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                 	<div class="widget">
                         <div class="footer_logo">
-                            <a href="#"><img src="assets/images/logo_light.png" alt="logo"/></a>
+                            <a href="#"><img src="{% static 'assets/images/logo_light.png' %}" alt="logo"/></a>
                         </div>
                         <p>If you are going to use of Lorem Ipsum need to be sure there isn't hidden of text</p>
                     </div>
@@ -1152,11 +711,11 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="footer_payment text-center text-lg-end">
-                        <li><a href="#"><img src="assets/images/visa.png" alt="visa"></a></li>
-                        <li><a href="#"><img src="assets/images/discover.png" alt="discover"></a></li>
-                        <li><a href="#"><img src="assets/images/master_card.png" alt="master_card"></a></li>
-                        <li><a href="#"><img src="assets/images/paypal.png" alt="paypal"></a></li>
-                        <li><a href="#"><img src="assets/images/amarican_express.png" alt="amarican_express"></a></li>
+                        <li><a href="#"><img src="{% static 'assets/images/visa.png' %}" alt="visa"></a></li>
+                        <li><a href="#"><img src="{% static 'assets/images/discover.png' %}" alt="discover"></a></li>
+                        <li><a href="#"><img src="{% static 'assets/images/master_card.png' %}" alt="master_card"></a></li>
+                        <li><a href="#"><img src="{% static 'assets/images/paypal.png' %}" alt="paypal"></a></li>
+                        <li><a href="#"><img src="{% static 'assets/images/amarican_express.png' %}" alt="amarican_express"></a></li>
                     </ul>
                 </div>
             </div>
@@ -1168,35 +727,33 @@
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
 
 <!-- Latest jQuery --> 
-<script src="assets/js/jquery-3.6.0.min.js"></script> 
-<!-- jquery-ui --> 
-<script src="assets/js/jquery-ui.js"></script>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
 <!-- popper min js -->
-<script src="assets/js/popper.min.js"></script>
-<!-- Latest compiled and minified Bootstrap --> 
-<script src="assets/bootstrap/js/bootstrap.min.js"></script> 
-<!-- owl-carousel min js  --> 
-<script src="assets/owlcarousel/js/owl.carousel.min.js"></script> 
-<!-- magnific-popup min js  --> 
-<script src="assets/js/magnific-popup.min.js"></script> 
-<!-- waypoints min js  --> 
-<script src="assets/js/waypoints.min.js"></script> 
-<!-- parallax js  --> 
-<script src="assets/js/parallax.js"></script> 
-<!-- countdown js  --> 
-<script src="assets/js/jquery.countdown.min.js"></script> 
-<!-- imagesloaded js --> 
-<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-<!-- isotope min js --> 
-<script src="assets/js/isotope.min.js"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<!-- Latest compiled and minified Bootstrap -->
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- owl-carousel min js  -->
+<script src="{% static 'assets/owlcarousel/js/owl.carousel.min.js' %}"></script>
+<!-- magnific-popup min js  -->
+<script src="{% static 'assets/js/magnific-popup.min.js' %}"></script>
+<!-- waypoints min js  -->
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<!-- parallax js  -->
+<script src="{% static 'assets/js/parallax.js ' %}"></script>
+<!-- countdown js  -->
+<script src="{% static 'assets/js/jquery.countdown.min.js ' %}"></script>
+<!-- imagesloaded js -->
+<script src="{% static 'assets/js/imagesloaded.pkgd.min.js' %}"></script>
+<!-- isotope min js -->
+<script src="{% static 'assets/js/isotope.min.js' %}"></script>
 <!-- jquery.dd.min js -->
-<script src="assets/js/jquery.dd.min.js"></script>
+<script src="{% static 'assets/js/jquery.dd.min.js' %}"></script>
 <!-- slick js -->
-<script src="assets/js/slick.min.js"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
 <!-- elevatezoom js -->
-<script src="assets/js/jquery.elevatezoom.js"></script>
-<!-- scripts js --> 
-<script src="assets/js/scripts.js"></script>
+<script src="{% static 'assets/js/jquery.elevatezoom.js' %}"></script>
+<!-- scripts js -->
+<script src="{% static 'assets/js/scripts.js' %}"></script>
 
 </body>
 </html>
