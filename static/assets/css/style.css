@@ -1113,7 +1113,7 @@ button:focus:not(:focus-visible) {
 .dark_skin .cart_list li {
 	border-color: #ddd;
 }
-.dark_skin .navbar .navbar-nav .dropdown-menu li a.active, 
+.dark_skin .navbar .navbar-nav .dropdown-menu li a.active,
 .dark_skin .navbar .navbar-nav .dropdown-menu li a:hover, 
 .dark_skin .navbar .navbar-nav .dropdown-menu > ul > li:hover > a, 
 .dark_skin .navbar .navbar-nav .dropdown-menu > ul > .mega-menu-col ul > li:hover > a {
@@ -5230,6 +5230,9 @@ footer .widget_title {
 	position: relative;
 	cursor: pointer;
 	border-radius: 100%;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.58);
+	/*border: 1px solid #0a58ca;*/
+
 }
 .product .product_color_switch span {
 	-webkit-transform: translateY(15px);

@@ -1,9 +1,14 @@
 from django.urls import reverse
 
+from PIL import Image as Img
+import io
+from django.core.files.uploadhandler import InMemoryUploadedFile
+
 from django.contrib.auth.models import User
 from django.db import models
 
 from users.models import CustomUser
+from django_resized import ResizedImageField
 
 
 # Create your models here.
@@ -77,7 +82,7 @@ class Product(models.Model):
     stock = models.PositiveSmallIntegerField("Акция", default=0, )
     description = models.TextField("Описание")
     model = models.CharField("Модель обуви", max_length=150)
-    color = models.ManyToManyField(Color,  null=True)
+    color = models.ManyToManyField(Color, null=True)
     size = models.ManyToManyField(Size, null=True)
     material = models.ManyToManyField(Material, null=True)
     capacity = models.IntegerField("Вес", null=True)
@@ -104,11 +109,56 @@ class Product(models.Model):
 
 class ProductShots(models.Model):
     title = models.CharField("Заголовок", max_length=100)
-    image = models.ImageField("Изоброжение", upload_to="product_shots/")
+    # imageSmall = ResizedImageField(size=[150, 160],  upload_to="product_shots/", null=True)
+    # imageBig = ResizedImageField(size=[540, 600], upload_to="product_shots/", null=True)
+    # imageZoom = ResizedImageField(size=[810,900], upload_to="product_shots/", null=True)
+    imageSmall = models.ImageField("Фото 150X160", upload_to="product_shots/", null=True)
+    imageBig = models.ImageField("Фото 540X600", upload_to="product_shots/", null=True)
+    imageZoom = models.ImageField("Фото 810X900", upload_to="product_shots/", null=True)
     product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
+
+    def save(self, **kwargs):
+        if self.imageSmall:
+            img = Img.open(io.BytesIO(self.imageSmall.read()))
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
+            img.thumbnail((150, 160), Img.ANTIALIAS)  # (width,height)
+            output = io.BytesIO()
+            img.save(output, format='JPEG')
+            output.seek(0)
+            self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg"
+                                              % self.imageSmall.name.split('.')[0], 'image/jpeg',
+                                              "Content-Type: charset=utf-8", None)
+            super(ProductShots, self).save()
+
+        if self.imageBig:
+            img = Img.open(io.BytesIO(self.imageBig.read()))
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
+            img.thumbnail((540, 600), Img.ANTIALIAS)  # (width,height)
+            output = io.BytesIO()
+            img.save(output, format='JPEG')
+            output.seek(0)
+            self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg"
+                                              % self.imageBig.name.split('.')[0], 'image/jpeg',
+                                              "Content-Type: charset=utf-8", None)
+            super(ProductShots, self).save()
+
+        if self.imageZoom:
+            img = Img.open(io.BytesIO(self.imageZoom.read()))
+            if img.mode != 'RGB':
+                img = img.convert('RGB')
+            img.thumbnail((810, 900), Img.ANTIALIAS)  # (width,height)
+            output = io.BytesIO()
+            img.save(output, format='JPEG')
+            output.seek(0)
+            self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg"
+                                              % self.imageZoom.name.split('.')[0], 'image/jpeg',
+                                              "Content-Type: charset=utf-8", None)
+            super(ProductShots, self).save()
 
     class Meta:
         verbose_name = "Фотография"
