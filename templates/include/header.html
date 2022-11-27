@@ -29,7 +29,8 @@
                        	<ul class="header_list">
                         	<li><a href="compare.html"><i class="ti-control-shuffle"></i><span>Compare</span></a></li>
                             <li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
-                            <li><a href="login.html"><i class="ti-user"></i><span>Login</span></a></li>
+                            <li><a href="#"><i class="ti-user"></i><span style="font-size: 18px">{{ request.user.username }}</span></a></li>
+
 						</ul>
                     </div>
                 </div>
@@ -49,39 +50,17 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="dropdown">
-                            <a data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Home</a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="../need/index.html">Fashion 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="index-2.html">Fashion 2</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="index-3.html">Furniture 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="index-4.html">Furniture 2</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="index-5.html">Electronics 1</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="index-6.html">Electronics 2</a></li>
-                                </ul>
-                            </div>
+                            <a  class="nav-link " href="#">Home</a>
                         </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="about.html">About Us</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="contact.html">Contact Us</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="faq.html">Faq</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="404.html">404 Error Page</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="login.html">Login</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="signup.html">Register</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="term-condition.html">Terms and Conditions</a></li>
-                                </ul>
-                            </div>
-                        </li>
+
                         <li class="dropdown dropdown-mega-menu">
                             <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Products</a>
                             <div class="dropdown-menu">
                                 <ul class="mega-menu d-lg-flex">
+
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
-                                            <li class="dropdown-header">Woman's</li>
+                                            <li class="dropdown-header">{{ category.name }}'s</li>
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-list-left-sidebar.html">Vestibulum sed</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-left-sidebar.html">Donec porttitor</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-right-sidebar.html">Donec vitae facilisis</a></li>
@@ -89,6 +68,7 @@
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-load-more.html">Vivamus in tortor</a></li>
                                         </ul>
                                     </li>
+
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Men's</li>
@@ -266,6 +246,8 @@
 {#                            </div>#}
                         </li>
                         <li><a class="nav-link nav_item" href="contact.html">Contact Us</a></li>
+                        <li><a class="nav-link nav_item" href="{% url 'logout' %}">Logout</a></li>
+
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
@@ -300,6 +282,7 @@
                     </li>
                 </ul>
             </nav>
+
         </div>
     </div>
 </header>
