@@ -40,7 +40,7 @@
     <div class="bottom_header dark_skin main_menu_uppercase">
     	<div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../need/index.html">
+                <a class="navbar-brand" href="{% url 'home' %}">
                     <img class="logo_light" src="{% static 'assets/images/logo_light.png' %}" alt="logo" />
                     <img class="logo_dark" src="{% static 'assets/images/logo_dark.png' %}" alt="logo" />
                 </a>
@@ -57,18 +57,20 @@
                             <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Products</a>
                             <div class="dropdown-menu">
                                 <ul class="mega-menu d-lg-flex">
-
+                                    {% for cat in category %}
                                     <li class="mega-menu-col col-lg-3">
+
                                         <ul>
-                                            <li class="dropdown-header">{{ category.name }}'s</li>
+                                            <li class="dropdown-header">{{ cat.name }}'s</li>
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-list-left-sidebar.html">Vestibulum sed</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-left-sidebar.html">Donec porttitor</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-right-sidebar.html">Donec vitae facilisis</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="../need/shop-list.html">Curabitur tempus</a></li>
                                             <li><a class="dropdown-item nav-link nav_item" href="shop-load-more.html">Vivamus in tortor</a></li>
                                         </ul>
-                                    </li>
 
+                                    </li>
+                                    {% endfor %}
                                     <li class="mega-menu-col col-lg-3">
                                         <ul>
                                             <li class="dropdown-header">Men's</li>
@@ -276,7 +278,7 @@
                             </ul>
                             <div class="cart_footer">
                                 <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>159.00</p>
-                                <p class="cart_buttons"><a href="#" class="btn btn-fill-line view-cart">View Cart</a><a href="#" class="btn btn-fill-out checkout">Checkout</a></p>
+                                <p class="cart_buttons"><a href="{% url 'cart' %}" class="btn btn-fill-line view-cart">View Cart</a><a href="{% url 'checkout' %}" class="btn btn-fill-out checkout">Checkout</a></p>
                             </div>
                         </div>
                     </li>

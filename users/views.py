@@ -16,7 +16,7 @@ def register_request(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for', user)
-            return redirect('login')
+            return redirect('')
         else:
             print(form.errors)
 
@@ -40,4 +40,4 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')

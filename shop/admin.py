@@ -9,10 +9,8 @@ admin.site.register(Subcategory)
 admin.site.register(Brand)
 admin.site.register(Product)
 admin.site.register(ProductShots)
-admin.site.register(Cart)
-admin.site.register(Cart_Detail)
 admin.site.register(Order)
-admin.site.register(Order_detail)
+admin.site.register(OrderItem)
 admin.site.register(Review)
 
 

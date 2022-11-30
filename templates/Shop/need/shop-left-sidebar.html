@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="product_info">
-                                <h6 class="product_title"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h6>
+                                <h6 class="product_title"><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h6>
                                 <div class="product_price">
                                     <span class="price">${{ product.price }}</span>
                                     <del>$55.25</del>

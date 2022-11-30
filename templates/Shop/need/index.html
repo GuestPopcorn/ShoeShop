@@ -127,12 +127,12 @@
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div class="product">
                                     <div class="product_img">
-                                        <a href="{{ product.get_absolute_url }}">
+                                        <a href="{% url 'product_detail' product.id %}">
                                             <img src="{{ product.poster.url }}" alt="product_img1">
                                         </a>
                                         <div class="product_action_box">
                                             <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+                                                <li data-product="{{ product.id }}" data-action="add" class="add-to-cart update-cart"><a href="#"><i class="icon-basket-loaded"></i>Add To Cart</a></li>
                                                 <li><a href="../none/shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                 <li><a href="../none/shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                                 <li><a href="#"><i class="icon-heart"></i></a></li>
@@ -140,9 +140,9 @@
                                         </div>
                                     </div>
                                     <div class="product_info">
-                                        <h6 class="product_title"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h6>
+                                        <h6 class="product_title"><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h6>
                                         <div class="product_price">
-                                            <span class="price">{{ product.price }}</span>
+                                            <span class="price">${{ product.price }}</span>
                                             <del>$55.25</del>
                                             <div class="on_sale">
                                                 <span>35% Off</span>
@@ -155,7 +155,7 @@
                                             <span class="rating_num">(21)</span>
                                         </div>
                                         <div class="pr_desc">
-                                            <p>{{ product.description }}</p>
+                                            <p>{{ product.slogan }}</p>
                                         </div>
                                         <div class="pr_switch_wrap">
                                             <div class="product_color_switch">
@@ -1599,6 +1599,7 @@
             </div>
         </div>
     </div>
+</div>
 <!-- END SECTION SHOP INFO -->
 
 <!-- START SECTION SUBSCRIBE NEWSLETTER -->
@@ -1622,5 +1623,4 @@
         </div>
     </div>
 <!-- START S
-</div>
 {% endblock %}

@@ -1,9 +1,12 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Product, Color, Category, Brand, Size, Subcategory
+from .models import Product, Color, Category, Brand, Size, Subcategory, Order, OrderItem
+import json
+from users.models import CustomUser
 
 
-@login_required(login_url='login')
+
 def home_page(request):
     products = Product.objects.all()
     context = {'product_list': products,
@@ -11,7 +14,7 @@ def home_page(request):
     return render(request, 'Shop/need/index.html', context=context)
 
 
-@login_required(login_url='login')
+
 def shop_view(request):
     products = Product.objects.all()
     category = Category.objects.all()
@@ -33,12 +36,63 @@ def header(request):
     context = {
         'category': category,
         'subcategory': subcategory,
-               }
+    }
     return render(request, template_name='include/header.html', context=context)
 
 
-@login_required(login_url='login')
-def product_detail(request, slug):
-    product = Product.objects.get(url=slug)
 
-    return render(request, 'Shop/need/shop-product-detail.html', {'product': product})
+def product_detail(request, pk):
+    category = Category.objects.all()
+    product = Product.objects.get(id=pk)
+    return render(request, 'Shop/need/shop-product-detail.html', {'product': product, 'category': category})
+
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    print('Action:', action)
+    print('productId:', productId)
+
+    customer = request.user
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)
+
+
+def cart(request):
+
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+    context = {'items': items, 'order': order}
+    return render(request, 'Shop/need/shop-cart.html', context)
+
+def checkout(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+    context = {'items': items, 'order': order}
+    return render(request, 'Shop/need/checkout.html', context)
