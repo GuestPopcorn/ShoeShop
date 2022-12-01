@@ -8,14 +8,34 @@ from users.models import CustomUser
 
 
 def home_page(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        cartItems = order['get_cart_items']
     products = Product.objects.all()
-    context = {'product_list': products,
+    context = {
+        'product_list': products,
+        'cartItems': cartItems,
                }
     return render(request, 'Shop/need/index.html', context=context)
 
 
 
 def shop_view(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        cartItems = order['get_cart_items']
     products = Product.objects.all()
     category = Category.objects.all()
     brands = Brand.objects.all()
@@ -26,6 +46,7 @@ def shop_view(request):
                'brand': brands,
                'size': size,
                'color': color,
+               'cartItems': cartItems,
                }
     return render(request, 'Shop/need/shop-left-sidebar.html', context=context)
 
@@ -41,10 +62,25 @@ def header(request):
 
 
 
+
 def product_detail(request, pk):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        cartItems = order['get_cart_items']
     category = Category.objects.all()
     product = Product.objects.get(id=pk)
-    return render(request, 'Shop/need/shop-product-detail.html', {'product': product, 'category': category})
+    context = {
+        'product': product,
+        'category': category,
+        'cartItems': cartItems,
+    }
+    return render(request, 'Shop/need/shop-product-detail.html', context)
 
 
 def updateItem(request):
@@ -75,24 +111,28 @@ def updateItem(request):
 
 
 def cart(request):
-
     if request.user.is_authenticated:
         customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
-    context = {'items': items, 'order': order}
+        cartItems = order['get_cart_items']
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'Shop/need/shop-cart.html', context)
+
 
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
     else:
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
-    context = {'items': items, 'order': order}
+        cartItems = order['get_cart_items']
+    context = {'items': items, 'order': order, 'cartItems': cartItems, }
     return render(request, 'Shop/need/checkout.html', context)

@@ -49,9 +49,9 @@
                                 <td class="product-name" data-title="Product"><a href="#">{{ item.product.name }}</a></td>
                                 <td class="product-price" data-title="Price">${{ item.product.price|floatformat:2 }}</td>
                                 <td class="product-quantity" data-title="Quantity"><div class="quantity">
-                                <input type="button" value="-" class="minus">
+                                <input  data-product={{ item.product.id }} data-action='remove' type="button" value="-" class="minus update-cart">
                                 <input type="text" name="quantity" value="{{ item.quantity }}" title="Qty" class="qty" size="4">
-                                <input type="button" value="+" class="plus">
+                                <input data-product={{ item.product.id }} data-action="add" type="button" value="+" class="plus update-cart">
                               </div></td>
                               	<td class="product-subtotal" data-title="Total">${{ item.get_total }}</td>
                                 <td class="product-remove" data-title="Remove"><a href="#"><i class="ti-close"></i></a></td>
