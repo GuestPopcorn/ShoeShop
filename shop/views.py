@@ -1,10 +1,24 @@
+from django.db.models import Q
+from django.views.generic import ListView
+import datetime
+import json
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Product, Color, Category, Brand, Size, Subcategory, Order, OrderItem
+from .models import Product, Color, Category, Brand, Size, Subcategory, Order, OrderItem, ShippingAddress
 import json
 from users.models import CustomUser
 
+
+class FilterCat:
+    def get_category(self):
+        return Category.objects.all()
+
+    def get_size(self):
+        return Size.objects.all()
+
+    def get_brand(self):
+        return Brand.objects.all()
 
 
 def home_page(request):
@@ -21,9 +35,8 @@ def home_page(request):
     context = {
         'product_list': products,
         'cartItems': cartItems,
-               }
+    }
     return render(request, 'Shop/need/index.html', context=context)
-
 
 
 def shop_view(request):
@@ -34,33 +47,29 @@ def shop_view(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
+
     products = Product.objects.all()
-    category = Category.objects.all()
     brands = Brand.objects.all()
     size = Size.objects.all()
     color = Color.objects.all()
+
+    category = request.GET.get('category', 0)
+    brand = request.GET.get('brand', 0)
+    if category != 0 and brand != 0:
+        products = Product.objects.filter(category__name=category, brand__name=brand)
+    elif category != 0:
+        products = Product.objects.filter(category__name=category)
+    elif brand != 0:
+        products = Product.objects.filter(brand__name=brand)
     context = {'product_list': products,
-               'category': category,
                'brand': brands,
                'size': size,
                'color': color,
                'cartItems': cartItems,
                }
     return render(request, 'Shop/need/shop-left-sidebar.html', context=context)
-
-
-def header(request):
-    category = Category.objects.all()
-    subcategory = Subcategory.objects.all()
-    context = {
-        'category': category,
-        'subcategory': subcategory,
-    }
-    return render(request, template_name='include/header.html', context=context)
-
-
 
 
 def product_detail(request, pk):
@@ -71,13 +80,13 @@ def product_detail(request, pk):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, }
         cartItems = order['get_cart_items']
-    category = Category.objects.all()
+
     product = Product.objects.get(id=pk)
     context = {
         'product': product,
-        'category': category,
+
         'cartItems': cartItems,
     }
     return render(request, 'Shop/need/shop-product-detail.html', context)
@@ -118,7 +127,7 @@ def cart(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'Shop/need/shop-cart.html', context)
@@ -132,7 +141,48 @@ def checkout(request):
         cartItems = order.get_cart_items
     else:
         items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
         cartItems = order['get_cart_items']
     context = {'items': items, 'order': order, 'cartItems': cartItems, }
     return render(request, 'Shop/need/checkout.html', context)
+
+
+def processOrder(request):
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+
+        if total == order.get_cart_total:
+            order.complete = True
+        order.save()
+
+        if order.shipping == True:
+            ShippingAddress.objects.create(
+                customer=customer,
+                order=order,
+                address=data['shipping']['address'],
+                city=data['shipping']['city'],
+                state=data['shipping']['state'],
+                zipcode=data['shipping']['zipcode'],
+
+            )
+
+    else:
+        print('User is not logged..')
+
+    return JsonResponse('Payment complete!', safe=False)
+
+
+class FilterProductView(FilterCat, ListView):
+
+    def get_queryset(self):
+        queryset = Product.objects.filter(
+            Q(category__in=self.request.GET.getlist("category")) |
+            Q(brand__in=self.request.GET.getlist("brand"))
+        )
+        return queryset

@@ -28,7 +28,7 @@ class Subcategory(models.Model):
     name = models.CharField("Sub-Категория", max_length=150)
     url = models.SlugField(max_length=160, unique=True)
     category = models.ForeignKey(
-        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True
+        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True, related_name='subcats'
     )
 
     def __str__(self):
@@ -80,7 +80,8 @@ class Product(models.Model):
     slogan = models.CharField('Слоган', max_length=200, null=True)
     poster = models.ImageField("Постер", upload_to="product/", null=True)
     price = models.PositiveSmallIntegerField("Цена", default=0, )
-    stock = models.PositiveSmallIntegerField("Акция", default=0, )
+    sale = models.PositiveSmallIntegerField("Акция", default=0, null=True )
+    stock = models.PositiveSmallIntegerField("Сколько в наличи", default=0, )
     description = models.TextField("Описание")
     model = models.CharField("Модель обуви", max_length=150)
     color = models.ManyToManyField(Color, null=True)
@@ -96,6 +97,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category, verbose_name="Категория", on_delete=models.CASCADE, null=True
     )
+    digital = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -238,3 +240,16 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.product.price * self.quantity
         return total
+
+
+class ShippingAddress(models.Model):
+    customer = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    address = models.CharField(max_length=200, null=False)
+    city = models.CharField(max_length=200, null=False)
+    state = models.CharField(max_length=200, null=False)
+    zipcode = models.CharField(max_length=200, null=False)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.address
