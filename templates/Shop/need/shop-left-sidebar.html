@@ -55,7 +55,7 @@
                             <div class="product_header_right">
                             	<div class="products_view">
                                     <a href="javascript:Void(0);" class="shorting_icon grid active"><i class="ti-view-grid"></i></a>
-                                    <a href="javascript:Void(0);" class="shorting_icon list"><i class="ti-layout-list-thumb"></i></a>
+                                    <a href="javascript:Void(0);" class="shorting_icon list "><i class="ti-layout-list-thumb"></i></a>
                                 </div>
                                 <div class="custom_select">
                                     <select class="form-control form-control-sm">
@@ -70,8 +70,8 @@
                     </div>
                 </div> 
                 <div class="row shop_container">
+                    {% for product in product_list %}
                     <div class="col-md-4 col-6">
-                        {% for product in product_list %}
                         <div class="product">
                             <div class="product_img">
                                 <a href="../need/shop-product-detail.html">
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="list_product_action_box">
                                     <ul class="list_none pr_action_btn">
-                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+                                        <li class="add-to-cart update-cart" data-action="add" product="{{ product.id }}"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
                                         <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                         <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                         <li><a href="#"><i class="icon-heart"></i></a></li>
@@ -121,9 +121,10 @@
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
+
         		<div class="row">
                     <div class="col-12">
                         <ul class="pagination mt-3 justify-content-center pagination_style1">
@@ -136,95 +137,80 @@
                 </div>
         	</div>
             <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0">
-            	<div class="sidebar">
-                	<div class="widget">
-                        <h5 class="widget_title">Categories</h5>
-                        <ul class="widget_categories">
-                            {% for category in category %}
-                                <li><a href="#"><span class="categories_name">{{ category.name }}</span></a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="widget">
-                    	<h5 class="widget_title">Filter</h5>
-                        <div class="filter_price">
-                             <div id="price_filter" data-min="0" data-max="500" data-min-value="50" data-max-value="300" data-price-sign="$"></div>
-                             <div class="price_range">
-                                 <span>Price: <span id="flt_price"></span></span>
-                                 <input type="hidden" id="price_first">
-                                 <input type="hidden" id="price_second">
+                <form method="get">
+                    <div class="sidebar">
+                        <div class="widget">
+                            <h5 class="widget_title">Categories</h5>
+                                <ul class="widget_categories">
+                                    {% for category in category %}
+                                        <li>
+                                            <input class="form-check-input" type="radio" name="category"  value="{{ category.name }}">
+                                            <label><span class="categories_name">{{ category.name }}</span></label>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                        </div>
+                        <div class="widget">
+                            <h5 class="widget_title">Filter</h5>
+                            <div class="filter_price">
+                                 <div id="price_filter" data-min="0" data-max="500" data-min-value="50" data-max-value="300" data-price-sign="$"></div>
+                                 <div class="price_range">
+                                     <span>Price: <span id="flt_price"></span></span>
+                                     <input type="hidden" id="price_first">
+                                     <input type="hidden" id="price_second">
+                                 </div>
                              </div>
-                         </div>
-                    </div>
-                    <div class="widget">
-                    	<h5 class="widget_title">Brand</h5>	
-                        <ul class="list_brand">
-                            {% for brand in brand %}
-                            <li>
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="Arrivals" value="">
-                                    <label class="form-check-label" for="Arrivals"><span>{{ brand.name }}</span></label>
+                        </div>
+                        <div class="widget">
+                            <h5 class="widget_title">Brand</h5>
+                            <ul class="list_brand">
+                                {% for bra in brand %}
+                                <li>
+                                    <div class="custome-checkbox">
+                                        <input class="" type="radio" name="brand" id="Arrivals" value="{{ bra.name }}">
+                                        <label class="" for="Arrivals"><span>{{ bra.name }}</span></label>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="widget">
+                            <h5 class="widget_title">Size</h5>
+                            <div class="product_size_switch">
+                                {% for size in size %}
+                                <span>{{ size.size }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <h5 class="widget_title">Color</h5>
+                            <div class="product_color_switch">
+                                {% for color in color %}
+                                <span data-color="#{{ color.code }}"></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <button type="submit">найти</button>
+                        <div class="widget">
+                            <div class="shop_banner">
+                                <div class="banner_img overlay_bg_20">
+                                    <img src="{% static 'assets/images/sidebar_banner_img.jpg' %}" alt="sidebar_banner_img">
                                 </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="widget">
-                    	<h5 class="widget_title">Size</h5>
-                        <div class="product_size_switch">
-                            {% for size in size %}
-                            <span>{{ size.size }}</span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="widget">
-                    	<h5 class="widget_title">Color</h5>
-                        <div class="product_color_switch">
-                            {% for color in color %}
-                            <span data-color="#{{ color.code }}"></span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="shop_banner">
-                            <div class="banner_img overlay_bg_20">
-                                <img src="{% static 'assets/images/sidebar_banner_img.jpg' %}" alt="sidebar_banner_img">
-                            </div> 
-                            <div class="shop_bn_content2 text_white">
-                                <h5 class="text-uppercase shop_subtitle">New Collection</h5>
-                                <h3 class="text-uppercase shop_title">Sale 30% Off</h3>
-                                <a href="#" class="btn btn-white rounded-0 btn-sm text-uppercase">Shop Now</a>
+                                <div class="shop_bn_content2 text_white">
+                                    <h5 class="text-uppercase shop_subtitle">New Collection</h5>
+                                    <h3 class="text-uppercase shop_title">Sale 30% Off</h3>
+                                    <a href="#" class="btn btn-white rounded-0 btn-sm text-uppercase">Shop Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                </form>
             </div>
         </div>
     </div>
 </div>
 <!-- END SECTION SHOP -->
-
-<!-- START SECTION SUBSCRIBE NEWSLETTER -->
-<div class="section bg_default small_pt small_pb">
-	<div class="container">	
-    	<div class="row align-items-center">	
-            <div class="col-md-6">
-                <div class="heading_s1 mb-md-0 heading_light">
-                    <h3>Subscribe Our Newsletter</h3>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="newsletter_form">
-                    <form>
-                        <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
-                        <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- START SECTION SUBSCRIBE NEWSLETTER -->
 
 </div>
 <!-- END MAIN CONTENT -->

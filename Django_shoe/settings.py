@@ -25,6 +25,9 @@ SECRET_KEY = 'django-insecure-k3q_gmjxzlv#qy3a+(%gp=*mgbz@$!2h9(38lth!+g*koj&r&=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # During development only
+
 ALLOWED_HOSTS = []
 
 
@@ -70,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shop.context_processor.extras',
             ],
         },
     },
@@ -77,6 +81,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Django_shoe.wsgi.application'
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

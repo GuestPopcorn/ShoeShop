@@ -20,16 +20,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from users.views import register_request, loginPage, logoutUser
+from users.views import register_request, loginPage, logoutUser, account
 
 from shop.views import home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("shop.urls")),
-    path("register", register_request, name="register"),
-    path("login", loginPage, name="login"),
-    path("logout", logoutUser, name="logout")
+    path('', include("users.urls")),
+
 ]
 
 
