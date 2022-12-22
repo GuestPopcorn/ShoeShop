@@ -28,7 +28,7 @@ DEBUG = True
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # During development only
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.10']
 
 
 # Application definition
@@ -42,11 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'taggit',
+    # 'taggit',
     'users',
-
-    'allauth',
-    'allauth.account',
+    #
+    # 'allauth',
+    # 'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
